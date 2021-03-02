@@ -60,9 +60,42 @@ GtkWidget *label4;
 GtkWidget *label5;
 GtkWidget *label6;
 
+//DOWin4
+
+GtkWidget *DOWin4;
+GtkWidget *fixed4;
+GtkWidget *d1;
+GtkWidget *d2;
+GtkWidget *d3;
+GtkWidget *d4;
+GtkWidget *d5;
+GtkWidget *d6;
+GtkWidget *d7;
+GtkWidget *d8;
+GtkWidget *d9;
+GtkWidget *d10;
+GtkWidget *d11;
+GtkWidget *d12;
+GtkWidget *d13;
+GtkWidget *d14;
+GtkWidget *d15;
+GtkWidget *d16;
+GtkWidget *d17;
+GtkWidget *d18;
+GtkWidget *label7;
+GtkWidget *label8;
+GtkWidget *label9;
+GtkWidget *label10;
+GtkWidget *label11;
+GtkWidget *label12;
+GtkWidget *label13;
+GtkWidget *img3;
+GtkWidget *img4;
+GtkWidget *b16;
 
 
-char p1[256]="Player 1",p2[256]="Player ",gch[1];//player names
+
+char p1[256]="Player1 ",p2[256]="Player2 ",gch[1];//player names
 bool o6 = false,o7=false,o8=false,o9=false,o10=false,o11=false,o12=false,o13=false,o14=false,o15=false;
 int q6=6,q7=7,q8=8,q9=9,q10=10,q11=11,q12=12,q13=13,q14=14;
 int TTcount=0;
@@ -127,6 +160,38 @@ GtkBuilder *builder;
    label6=GTK_WIDGET(gtk_builder_get_object(builder,"label6"));
 
 
+   //DOWin4
+   DOWin4=GTK_WIDGET(gtk_builder_get_object(builder,"DOWin4"));
+   d1=GTK_WIDGET(gtk_builder_get_object(builder,"d1"));
+   d2=GTK_WIDGET(gtk_builder_get_object(builder,"d2"));
+   d3=GTK_WIDGET(gtk_builder_get_object(builder,"d3"));
+   d4=GTK_WIDGET(gtk_builder_get_object(builder,"d4"));
+   d5=GTK_WIDGET(gtk_builder_get_object(builder,"d5"));
+   d6=GTK_WIDGET(gtk_builder_get_object(builder,"d6"));
+   d7=GTK_WIDGET(gtk_builder_get_object(builder,"d7"));
+   d8=GTK_WIDGET(gtk_builder_get_object(builder,"d8"));
+   d9=GTK_WIDGET(gtk_builder_get_object(builder,"d9"));
+   d10=GTK_WIDGET(gtk_builder_get_object(builder,"d10"));
+   d11=GTK_WIDGET(gtk_builder_get_object(builder,"d11"));
+   d12=GTK_WIDGET(gtk_builder_get_object(builder,"d12"));
+   d13=GTK_WIDGET(gtk_builder_get_object(builder,"d13"));
+   d14=GTK_WIDGET(gtk_builder_get_object(builder,"d14"));
+   d15=GTK_WIDGET(gtk_builder_get_object(builder,"d15"));
+   d16=GTK_WIDGET(gtk_builder_get_object(builder,"d16"));
+   d17=GTK_WIDGET(gtk_builder_get_object(builder,"d17"));
+   d18=GTK_WIDGET(gtk_builder_get_object(builder,"d18"));
+   label7=GTK_WIDGET(gtk_builder_get_object(builder,"label7"));
+   label8=GTK_WIDGET(gtk_builder_get_object(builder,"label8"));
+   label9=GTK_WIDGET(gtk_builder_get_object(builder,"label9"));
+   label10=GTK_WIDGET(gtk_builder_get_object(builder,"label10"));
+   label11=GTK_WIDGET(gtk_builder_get_object(builder,"label11"));
+   label12=GTK_WIDGET(gtk_builder_get_object(builder,"label12"));
+   label13=GTK_WIDGET(gtk_builder_get_object(builder,"label13"));
+   img3=GTK_WIDGET(gtk_builder_get_object(builder,"img3"));
+   img4=GTK_WIDGET(gtk_builder_get_object(builder,"img4"));
+   b16=GTK_WIDGET(gtk_builder_get_object(builder,"b16"));
+
+
 
 
   gtk_main ();
@@ -136,7 +201,9 @@ GtkBuilder *builder;
 
   void gameCaller(int x)
   {
-        if(x==2||x==(int)'2')TTTG();
+        if(x==1||x==(int)'1')DOG();
+        else if(x==2||x==(int)'2')TTTG();
+
   }
 
   //Window1
@@ -188,7 +255,7 @@ GtkBuilder *builder;
   void b2_clicked_cb(GtkButton *b)//OK in Game Choice
     {
     gtk_widget_hide(MenuWin2);
-    gtk_widget_show(AppWin3);
+    //gtk_widget_show(AppWin3);
     gameCaller(rfinal);
     //gtk_widget_show();
   }
@@ -249,7 +316,7 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
          gtk_button_set_label(GTK_BUTTON(b6),(const gchar*) "X");
          q6=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
 
         else {
         gtk_widget_show(img2);
@@ -257,7 +324,7 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
          gtk_button_set_label(GTK_BUTTON(b6),(const gchar*) "O");
          q6=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o6=true;
         TTcount++;}
@@ -273,14 +340,14 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
          gtk_button_set_label(GTK_BUTTON(b7),(const gchar*) "X");
          q7=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
         else {
         gtk_widget_show(img2);
         gtk_widget_hide(img1);
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
          gtk_button_set_label(GTK_BUTTON(b7),(const gchar*) "O");
          q7=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o7=true;
         TTcount++;}
@@ -296,14 +363,14 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
          gtk_button_set_label(GTK_BUTTON(b8),(const gchar*) "X");
          q8=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
         else {
         gtk_widget_show(img2);
         gtk_widget_hide(img1);
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
          gtk_button_set_label(GTK_BUTTON(b8),(const gchar*) "O");
          q8=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o8=true;
         TTcount++;}
@@ -319,14 +386,14 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
          gtk_button_set_label(GTK_BUTTON(b9),(const gchar*) "X");
          q9=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
         else  {
         gtk_widget_show(img2);
         gtk_widget_hide(img1);
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
         gtk_button_set_label(GTK_BUTTON(b9),(const gchar*) "O");
         q9=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o9=true;
         TTcount++;}
@@ -342,14 +409,14 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
         gtk_button_set_label(GTK_BUTTON(b10),(const gchar*) "X");
         q10=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
         else  {
         gtk_widget_show(img2);
         gtk_widget_hide(img1);
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
         gtk_button_set_label(GTK_BUTTON(b10),(const gchar*) "O");
         q10=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o10=true;
         TTcount++;}
@@ -365,14 +432,14 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
         gtk_button_set_label(GTK_BUTTON(b11),(const gchar*) "X");
         q11=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
         else  {
         gtk_widget_show(img2);
         gtk_widget_hide(img1);
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
         gtk_button_set_label(GTK_BUTTON(b11),(const gchar*) "O");
         q11=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o11=true;
         TTcount++;}
@@ -388,14 +455,14 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
         gtk_button_set_label(GTK_BUTTON(b12),(const gchar*) "X");
         q12=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
         else  {
         gtk_widget_show(img2);
         gtk_widget_hide(img1);
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
         gtk_button_set_label(GTK_BUTTON(b12),(const gchar*) "O");
         q12=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o12=true;
         TTcount++;}
@@ -411,14 +478,14 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
         gtk_button_set_label(GTK_BUTTON(b13),(const gchar*) "X");
         q13=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
         else  {
         gtk_widget_show(img2);
         gtk_widget_hide(img1);
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
         gtk_button_set_label(GTK_BUTTON(b13),(const gchar*) "O");
         q13=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o13=true;
         TTcount++;}
@@ -434,32 +501,29 @@ GtkBuilder *builder;
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p1);
         gtk_button_set_label(GTK_BUTTON(b14),(const gchar*) "X");
         q14=1;
-         checkTTT(p1);}
+         checkTTT(p2);}
         else  {
         gtk_widget_show(img2);
         gtk_widget_hide(img1);
         gtk_label_set_text(GTK_LABEL(label6),(const gchar*)p2);
         gtk_button_set_label(GTK_BUTTON(b14),(const gchar*) "O");
         q14=2;
-         checkTTT(p2);}
+         checkTTT(p1);}
 
         o14=true;
         TTcount++;}
 
    }
-
-
    void b15_clicked_cb()
    {
         gtk_widget_hide(AppWin3);
    }
-
    void checkTTT(char x[])
    {
         if((q6==q7&&q7==q8)||(q9==q10&&q10==q11)||(q12==q13&&q13==q14)||(q6==q9&&q9==q12)||(q7==q10&&q10==q13)||(q8==q11&&q11==q14)||(q6==q10&&q10==q14)||(q8==q10&&q10==q12))
         {
             o6 = true;o7=true;o8=true;o9=true;o10=true;o11=true;o12=true;o13=true;o14=true;o15=true;
-            char k[200]=" won the game!!!!!";
+            char k[200]=" Won The Game!!!";
             strcat(x,k);
 
             gtk_label_set_text(GTK_LABEL(label5),(const gchar*) x);
@@ -467,4 +531,37 @@ GtkBuilder *builder;
         }
         else if(TTcount>=8)gtk_label_set_text(GTK_LABEL(label5),(const gchar*) "           Match Draw!!!");
    }
+    void DOG()
+    {
+        gtk_widget_show(DOWin4);
 
+    }
+    void b16_clicked_cb()
+    {
+        int u2;
+        int y2;
+        srand(time(0));
+        int u;
+        int y;
+        while(true){u=rand();u=u%10;if(u>0&&u<=6&&u!=u2)break;}
+        while(true){y=rand();y=y%10;if(y>0&&y<=6&&y!=y2)break;}
+
+        gchar cq1[8]=".png";
+        gchar cq2[8]=".png";
+
+        gchar u1[200];
+        gchar y1[200];
+
+        u2=u;
+        y2=y;
+
+        sprintf(u1,"%d",u);
+        sprintf(y1,"%d",y);
+
+        strcat(u1,cq1);
+        strcat(y1,cq2);
+
+        gtk_image_set_from_file(GTK_IMAGE(img3),(const gchar*) u1);
+        gtk_image_set_from_file(GTK_IMAGE(img4),(const gchar*) y1);
+
+    }
