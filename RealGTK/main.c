@@ -101,7 +101,12 @@ int q6=6,q7=7,q8=8,q9=9,q10=10,q11=11,q12=12,q13=13,q14=14;
 int TTcount=0;
 //const gchar XO[3];
 
-int rfinal=1;
+bool s1=false,s2=false,s3=false,s4=false,s5=false,s6=false,s7=false,s8=false,s9=false,s10=false,s11=false,s12=false,s13=false,s14=false,s15=false,s16=false,s17=false,s18=false,p1s=false,p2s=false;
+bool z[10]={false,false,false,false,false,false,false,false,false,false};
+bool z2[10]={true,false,false,false,false,false,false,false,false,false};
+
+
+int rfinal=1,last=100,dsum;
 int main (int argc, char *argv[])
 
 {
@@ -549,6 +554,8 @@ GtkBuilder *builder;
         gchar cq1[8]=".png";
         gchar cq2[8]=".png";
 
+        dsum=u+y;
+
         gchar u1[200];
         gchar y1[200];
 
@@ -564,4 +571,307 @@ GtkBuilder *builder;
         gtk_image_set_from_file(GTK_IMAGE(img3),(const gchar*) u1);
         gtk_image_set_from_file(GTK_IMAGE(img4),(const gchar*) y1);
 
+        if(z[0])
+        {
+            if(isValid(u)==1);
+        }
+        else
+        {
+            if(isValid(u+9)==1);
+        }
+
     }
+    void fireNext(int x)
+    {
+        if(x<=9){
+            int k=dsum-x;
+            last=k;
+            switch(k)
+            {
+            case 1:d1_clicked_cb();break;
+            case 2:d2_clicked_cb();break;
+            case 3:d3_clicked_cb();break;
+            case 4:d4_clicked_cb();break;
+            case 5:d5_clicked_cb();break;
+            case 6:d6_clicked_cb();break;
+            case 7:d7_clicked_cb();break;
+            case 8:d8_clicked_cb();break;
+            case 9:d9_clicked_cb();break;
+            }
+        }
+        else{
+            x=x-9;
+            int k=dsum-x;
+            last=k+9;
+            switch(k)
+            {
+            case 1:d10_clicked_cb();
+            case 2:d11_clicked_cb();
+            case 3:d12_clicked_cb();
+            case 4:d13_clicked_cb();
+            case 5:d14_clicked_cb();
+            case 6:d15_clicked_cb();
+            case 7:d16_clicked_cb();
+            case 8:d17_clicked_cb();
+            case 9:d18_clicked_cb();
+            }
+        }
+    }
+
+    int isValid(int x)
+    {
+        int ct=0;
+        if(x>=9)
+        {
+            for(int i=1;i<=9;i++)
+            {
+                for(int j=i;j<=9;j++)
+                {
+                    if((i+j==dsum)&&(!z[i]&&!z[j]))ct++;
+                }
+            }
+        }
+        else
+        {
+            for(int i=1;i<=9;i++)
+            {
+                for(int j=i;j<=9;j++)
+                {
+                    if((i+j==dsum)&&(!z2[i]&&!z2[j]))ct++;
+                }
+            }
+        }
+
+
+        if(ct>0)return 1;
+        else return 0;
+    }
+
+
+    void d1_clicked_cb()
+    {
+        if((z[0]&&!z[1])||(last==1&&!z[1]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                gtk_button_set_label(GTK_BUTTON(d1),(const gchar*) "0");
+                z[1]=true;
+                last=100;
+                fireNext(1);
+        }
+    }
+
+    void d2_clicked_cb()
+    {
+        if((z[0]&&!z[2])||(last==2&&!z[2]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                gtk_button_set_label(GTK_BUTTON(d2),(const gchar*) "0");
+                z[2]=true;
+                last=100;
+                fireNext(2);
+        }
+    }
+
+    void d3_clicked_cb()
+    {
+        if((z[0]&&!z[3])||(last==3&&!z[3]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                gtk_button_set_label(GTK_BUTTON(d3),(const gchar*) "0");
+                z[3]=true;
+                last=100;
+                fireNext(3);
+        }
+    }
+
+    void d4_clicked_cb()
+    {
+        if((z[0]&&!z[4])||(last==4&&!z[4]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                gtk_button_set_label(GTK_BUTTON(d4),(const gchar*) "0");
+                z[4]=true;
+                last=100;
+                fireNext(4);
+        }
+    }
+
+    void d5_clicked_cb()
+    {
+        if((z[0]&&!z[5])||(last==5&&!z[5]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                gtk_button_set_label(GTK_BUTTON(d5),(const gchar*) "0");
+                z[5]=true;
+                last=100;
+                fireNext(5);
+        }
+    }
+
+    void d6_clicked_cb()
+    {
+        if((z[0]&&!z[6])||(last==6&&!z[6]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                z[6]=true;
+                gtk_button_set_label(GTK_BUTTON(d6),(const gchar*) "0");
+                last=100;
+                fireNext(6);
+        }
+    }
+
+    void d7_clicked_cb()
+    {
+        if((z[0]&&!z[7])||(last==7&&!z[7]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                gtk_button_set_label(GTK_BUTTON(d7),(const gchar*) "0");
+                z[7]=true;
+                last=100;
+                fireNext(7);
+        }
+    }
+
+    void d8_clicked_cb()
+    {
+        if((z[0]&&!z[8])||(last==8&&!z[8]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                z[8]=true;
+                gtk_button_set_label(GTK_BUTTON(d8),(const gchar*) "0");
+                last=100;
+                fireNext(8);
+        }
+    }
+
+    void d9_clicked_cb()
+    {
+        if((z[0]&&!z[9])||(last==9&&!z[9]))
+        {
+                z[0]=false;
+                z2[0]=true;
+                z[9]=true;
+                gtk_button_set_label(GTK_BUTTON(d9),(const gchar*) "0");
+                last=100;
+                fireNext(9);
+        }
+    }
+
+   //Z2
+    void d10_clicked_cb()
+    {
+        if((z2[0]&&!z2[1])||(last==10&&!z2[1]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[1]=true;
+                gtk_button_set_label(GTK_BUTTON(d10),(const gchar*) "0");
+                last=100;
+                fireNext(10);
+        }
+    }
+    void d11_clicked_cb()
+    {
+        if((z2[0]&&!z2[2])||(last==11&&!z2[2]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[2]=true;
+                gtk_button_set_label(GTK_BUTTON(d11),(const gchar*) "0");
+                last=100;
+                fireNext(11);
+        }
+    }
+    void d12_clicked_cb()
+    {
+        if((z2[0]&&!z2[3])||(last==12&&!z2[3]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[3]=true;
+                gtk_button_set_label(GTK_BUTTON(d12),(const gchar*) "0");
+                last=100;
+                fireNext(12);
+        }
+    }
+    void d13_clicked_cb()
+    {
+        if((z2[0]&&!z2[4])||(last==13&&!z2[4]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[4]=true;
+                gtk_button_set_label(GTK_BUTTON(d13),(const gchar*) "0");
+                last=100;
+                fireNext(13);
+        }
+    }
+    void d14_clicked_cb()
+    {
+        if((z2[0]&&!z2[5])||(last==14&&!z2[5]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[5]=true;
+                gtk_button_set_label(GTK_BUTTON(d14),(const gchar*) "0");
+                last=100;
+                fireNext(14);
+        }
+    }
+    void d15_clicked_cb()
+    {
+        if((z2[0]&&!z2[6])||(last==15&&!z2[6]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[6]=true;
+                gtk_button_set_label(GTK_BUTTON(d15),(const gchar*) "0");
+                last=100;
+                fireNext(15);
+        }
+    }
+    void d16_clicked_cb()
+    {
+        if((z2[0]&&!z2[7])||(last==16&&!z2[7]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[7]=true;
+                gtk_button_set_label(GTK_BUTTON(d16),(const gchar*) "0");
+                last=100;
+                fireNext(16);
+        }
+    }
+    void d17_clicked_cb()
+    {
+        if((z2[0]&&!z2[8])||(last==17&&!z2[8]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[8]=true;
+                gtk_button_set_label(GTK_BUTTON(d17),(const gchar*) "0");
+                last=100;
+                fireNext(17);
+        }
+    }
+    void d18_clicked_cb()
+    {
+        if((z2[0]&&!z2[9])||(last==18&&!z2[9]))
+        {
+                z[0]=true;
+                z2[0]=false;
+                z2[9]=true;
+                gtk_button_set_label(GTK_BUTTON(d18),(const gchar*) "0");
+                last=100;
+                fireNext(18);
+        }
+    }
+

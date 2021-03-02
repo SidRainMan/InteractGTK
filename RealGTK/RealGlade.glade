@@ -287,6 +287,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d1_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">50</property>
@@ -301,6 +302,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d3_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">150</property>
@@ -315,6 +317,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d5_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">250</property>
@@ -329,6 +332,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d2_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">100</property>
@@ -343,6 +347,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d4_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">200</property>
@@ -357,6 +362,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d6_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">300</property>
@@ -371,6 +377,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d7_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">350</property>
@@ -385,6 +392,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d8_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">400</property>
@@ -399,6 +407,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d9_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">450</property>
@@ -413,6 +422,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d10_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">50</property>
@@ -427,6 +437,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d11_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">100</property>
@@ -441,6 +452,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d12_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">150</property>
@@ -455,6 +467,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d13_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">200</property>
@@ -469,6 +482,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d14_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">250</property>
@@ -483,6 +497,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d15_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">300</property>
@@ -497,6 +512,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d16_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">350</property>
@@ -511,6 +527,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d17_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">400</property>
@@ -525,6 +542,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <signal name="clicked" handler="d18_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="x">450</property>
