@@ -98,15 +98,16 @@ GtkWidget *b16;
 char p1[256]="Player1 ",p2[256]="Player2 ",gch[1];//player names
 bool o6 = false,o7=false,o8=false,o9=false,o10=false,o11=false,o12=false,o13=false,o14=false,o15=false;
 int q6=6,q7=7,q8=8,q9=9,q10=10,q11=11,q12=12,q13=13,q14=14;
-int TTcount=0;
+int TTcount=0,oldsum=0,p1sum=0,p2sum=0,p1round=0,p2round=0;
+bool o16=true;//DICE BUTTON
 //const gchar XO[3];
 
 bool s1=false,s2=false,s3=false,s4=false,s5=false,s6=false,s7=false,s8=false,s9=false,s10=false,s11=false,s12=false,s13=false,s14=false,s15=false,s16=false,s17=false,s18=false,p1s=false,p2s=false;
 bool z[10]={false,false,false,false,false,false,false,false,false,false};
-bool z2[10]={true,false,false,false,false,false,false,false,false,false};
+bool z2[10]={false,false,false,false,false,false,false,false,false,false};
 
 
-int rfinal=1,last=100,dsum;
+int rfinal=1,last=100,dsum,lastz=3;
 int main (int argc, char *argv[])
 
 {
@@ -538,51 +539,23 @@ GtkBuilder *builder;
    }
     void DOG()
     {
+
+
         gtk_widget_show(DOWin4);
+        char turn[200]="First Turn, Please Roll the Dice ";
+        strcat(turn,p1);
+        gtk_label_set_text(GTK_LABEL(label11),(const gchar*)turn);
 
-    }
-    void b16_clicked_cb()
-    {
-        int u2;
-        int y2;
-        srand(time(0));
-        int u;
-        int y;
-        while(true){u=rand();u=u%10;if(u>0&&u<=6&&u!=u2)break;}
-        while(true){y=rand();y=y%10;if(y>0&&y<=6&&y!=y2)break;}
+        gtk_label_set_text(GTK_LABEL(label7),(const gchar*)p1);
+        gtk_label_set_text(GTK_LABEL(label8),(const gchar*)p2);
 
-        gchar cq1[8]=".png";
-        gchar cq2[8]=".png";
-
-        dsum=u+y;
-
-        gchar u1[200];
-        gchar y1[200];
-
-        u2=u;
-        y2=y;
-
-        sprintf(u1,"%d",u);
-        sprintf(y1,"%d",y);
-
-        strcat(u1,cq1);
-        strcat(y1,cq2);
-
-        gtk_image_set_from_file(GTK_IMAGE(img3),(const gchar*) u1);
-        gtk_image_set_from_file(GTK_IMAGE(img4),(const gchar*) y1);
-
-        if(z[0])
-        {
-            if(isValid(u)==1);
-        }
-        else
-        {
-            if(isValid(u+9)==1);
-        }
 
     }
     void fireNext(int x)
     {
+
+        o16=true;
+
         if(x<=9){
             int k=dsum-x;
             last=k;
@@ -600,28 +573,52 @@ GtkBuilder *builder;
             }
         }
         else{
-            x=x-9;
-            int k=dsum-x;
-            last=k+9;
-            switch(k)
-            {
-            case 1:d10_clicked_cb();
-            case 2:d11_clicked_cb();
-            case 3:d12_clicked_cb();
-            case 4:d13_clicked_cb();
-            case 5:d14_clicked_cb();
-            case 6:d15_clicked_cb();
-            case 7:d16_clicked_cb();
-            case 8:d17_clicked_cb();
-            case 9:d18_clicked_cb();
+                x=x-9;
+                int k=dsum-x;
+                last=k+9;
+                switch(k)
+                {
+                case 1:d10_clicked_cb();
+                case 2:d11_clicked_cb();
+                case 3:d12_clicked_cb();
+                case 4:d13_clicked_cb();
+                case 5:d14_clicked_cb();
+                case 6:d15_clicked_cb();
+                case 7:d16_clicked_cb();
+                case 8:d17_clicked_cb();
+                case 9:d18_clicked_cb();
+                }
             }
-        }
+            if(lastz==1&&oldsum!=dsum)
+            {
+            p1round=dsum;
+            p1sum+=p1round;
+            char io[5]="+";
+            char iio[5]="+";
+            sprintf(io,"%d",dsum);
+            sprintf(iio,"%d",p1sum);
+            gtk_label_set_text(GTK_LABEL(label9),(const gchar*)iio);
+            gtk_label_set_text(GTK_LABEL(label12),(const gchar*)io);
+            }
+            else if(lastz==2&&oldsum!=dsum)
+            {
+            p2round=dsum;
+            p2sum+=p2round;
+            char io[5]="+";
+            char iio[5];
+            sprintf(io,"%d",dsum);
+            sprintf(iio,"%d",p2sum);
+            gtk_label_set_text(GTK_LABEL(label10),(const gchar*)iio);
+            gtk_label_set_text(GTK_LABEL(label13),(const gchar*)io);
+            }
+            oldsum=dsum;
+
     }
 
     int isValid(int x)
     {
         int ct=0;
-        if(x>=9)
+        if(x<=9)
         {
             for(int i=1;i<=9;i++)
             {
@@ -630,6 +627,7 @@ GtkBuilder *builder;
                     if((i+j==dsum)&&(!z[i]&&!z[j]))ct++;
                 }
             }
+            if(dsum<=9){if(!z[dsum])ct++;}
         }
         else
         {
@@ -640,6 +638,7 @@ GtkBuilder *builder;
                     if((i+j==dsum)&&(!z2[i]&&!z2[j]))ct++;
                 }
             }
+            if(dsum<=9){if(!z2[dsum])ct++;}
         }
 
 
@@ -647,65 +646,142 @@ GtkBuilder *builder;
         else return 0;
     }
 
+    void b16_clicked_cb()//DICE BUTTON
+    {
+        if(o16)
+        {
+            //Dice Display
+            int u2;
+            int y2;
+            srand(time(0));
+            int u;
+            int y;
+            while(true){u=rand();u=u%10;if(u>0&&u<=6&&u!=u2)break;}
+            while(true){y=rand();y=y%10;if(y>0&&y<=6&&y!=y2)break;}
+            gchar cq1[8]=".png";
+            gchar cq2[8]=".png";
+            dsum=u+y;
+            gchar u1[200];
+            gchar y1[200];
+            u2=u;
+            y2=y;
+            sprintf(u1,"%d",u);
+            sprintf(y1,"%d",y);
+            strcat(u1,cq1);
+            strcat(y1,cq2);
+            gtk_image_set_from_file(GTK_IMAGE(img3),(const gchar*) u1);
+            gtk_image_set_from_file(GTK_IMAGE(img4),(const gchar*) y1);
+
+            if(lastz==1)z2[0]=true;
+            else if(lastz==2)z[0]=true;
+
+            //Game Initialization
+            char turn[200]="Next Turn: ";
+            if(!z[0]&&!z2[0])z[0]=true;
+
+
+            if(z[0])strcat(turn,p2);
+            else strcat(turn,p1);
+
+            gtk_label_set_text(GTK_LABEL(label11),(const gchar*)turn);
+
+            o16=false;//Disable Dice
+            if(z[0])lastz=1;
+            else lastz=2;
+
+
+                if(isValid(u)!=1&&z[0])
+                {
+                    z[0]=false;
+                    z2[0]=true;
+                    gtk_label_set_text(GTK_LABEL(label11),(const gchar*) "No Moves Left For Player On Top!!");
+                    o16=true;
+                }
+                else if(isValid(u+9)!=1&&z2[0])
+                {
+                    z[0]=true;
+                    z2[0]=false;
+                    gtk_label_set_text(GTK_LABEL(label11),(const gchar*) "No Moves Left For Player On Bottom!!");
+                    o16=true;
+
+            }
+
+
+
+        }
+    }
+
+
 
     void d1_clicked_cb()
     {
-        if((z[0]&&!z[1])||(last==1&&!z[1]))
-        {
-                z[0]=false;
-                z2[0]=true;
-                gtk_button_set_label(GTK_BUTTON(d1),(const gchar*) "0");
-                z[1]=true;
-                last=100;
-                fireNext(1);
-        }
+        if(dsum<1);
+
+            else if((z[0]&&!z[1])||(last==1&&!z[1]))
+            {
+                    z[0]=false;
+                    //z2[0]=true;
+                    gtk_button_set_label(GTK_BUTTON(d1),(const gchar*) "0");
+                    z[1]=true;
+                    last=100;
+                    fireNext(1);
+            }
     }
 
     void d2_clicked_cb()
     {
-        if((z[0]&&!z[2])||(last==2&&!z[2]))
+        if(dsum<2);
+
+            else if((z[0]&&!z[2])||(last==2&&!z[2]))
         {
                 z[0]=false;
-                z2[0]=true;
+                //z2[0]=true;
                 gtk_button_set_label(GTK_BUTTON(d2),(const gchar*) "0");
                 z[2]=true;
                 last=100;
                 fireNext(2);
         }
+
     }
 
     void d3_clicked_cb()
     {
-        if((z[0]&&!z[3])||(last==3&&!z[3]))
-        {
-                z[0]=false;
-                z2[0]=true;
-                gtk_button_set_label(GTK_BUTTON(d3),(const gchar*) "0");
-                z[3]=true;
-                last=100;
-                fireNext(3);
-        }
+
+            if(dsum<3);
+
+            else if((z[0]&&!z[3])||(last==3&&!z[3]))
+            {
+                    z[0]=false;
+                    //z2[0]=true;
+                    gtk_button_set_label(GTK_BUTTON(d3),(const gchar*) "0");
+                    z[3]=true;
+                    last=100;
+                    fireNext(3);
+            }
     }
 
     void d4_clicked_cb()
     {
-        if((z[0]&&!z[4])||(last==4&&!z[4]))
-        {
-                z[0]=false;
-                z2[0]=true;
-                gtk_button_set_label(GTK_BUTTON(d4),(const gchar*) "0");
-                z[4]=true;
-                last=100;
-                fireNext(4);
-        }
+            if(dsum<4);
+
+            else if((z[0]&&!z[4])||(last==4&&!z[4]))
+            {
+                    z[0]=false;
+                    //z2[0]=true;
+                    gtk_button_set_label(GTK_BUTTON(d4),(const gchar*) "0");
+                    z[4]=true;
+                    last=100;
+                    fireNext(4);
+            }
     }
 
     void d5_clicked_cb()
     {
-        if((z[0]&&!z[5])||(last==5&&!z[5]))
+        if(dsum<5);
+            else if((z[0]&&!z[5])||(last==5&&!z[5]))
         {
                 z[0]=false;
-                z2[0]=true;
+                //z2[0]=true;
                 gtk_button_set_label(GTK_BUTTON(d5),(const gchar*) "0");
                 z[5]=true;
                 last=100;
@@ -715,10 +791,12 @@ GtkBuilder *builder;
 
     void d6_clicked_cb()
     {
-        if((z[0]&&!z[6])||(last==6&&!z[6]))
+        if(dsum<6);
+
+            else if((z[0]&&!z[6])||(last==6&&!z[6]))
         {
                 z[0]=false;
-                z2[0]=true;
+                //z2[0]=true;
                 z[6]=true;
                 gtk_button_set_label(GTK_BUTTON(d6),(const gchar*) "0");
                 last=100;
@@ -728,10 +806,12 @@ GtkBuilder *builder;
 
     void d7_clicked_cb()
     {
-        if((z[0]&&!z[7])||(last==7&&!z[7]))
+        if(dsum<7);
+
+            else if((z[0]&&!z[7])||(last==7&&!z[7]))
         {
                 z[0]=false;
-                z2[0]=true;
+                //z2[0]=true;
                 gtk_button_set_label(GTK_BUTTON(d7),(const gchar*) "0");
                 z[7]=true;
                 last=100;
@@ -741,10 +821,11 @@ GtkBuilder *builder;
 
     void d8_clicked_cb()
     {
-        if((z[0]&&!z[8])||(last==8&&!z[8]))
+        if(dsum<8);
+            else if((z[0]&&!z[8])||(last==8&&!z[8]))
         {
                 z[0]=false;
-                z2[0]=true;
+                //z2[0]=true;
                 z[8]=true;
                 gtk_button_set_label(GTK_BUTTON(d8),(const gchar*) "0");
                 last=100;
@@ -754,10 +835,11 @@ GtkBuilder *builder;
 
     void d9_clicked_cb()
     {
-        if((z[0]&&!z[9])||(last==9&&!z[9]))
+        if(dsum<9);
+        else if((z[0]&&!z[9])||(last==9&&!z[9]))
         {
                 z[0]=false;
-                z2[0]=true;
+                //z2[0]=true;
                 z[9]=true;
                 gtk_button_set_label(GTK_BUTTON(d9),(const gchar*) "0");
                 last=100;
@@ -768,10 +850,13 @@ GtkBuilder *builder;
    //Z2
     void d10_clicked_cb()
     {
-        if((z2[0]&&!z2[1])||(last==10&&!z2[1]))
+        if(dsum<1);
+
+            else if((z2[0]&&!z2[1])||(last==10&&!z2[1]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
+
                 z2[1]=true;
                 gtk_button_set_label(GTK_BUTTON(d10),(const gchar*) "0");
                 last=100;
@@ -780,9 +865,11 @@ GtkBuilder *builder;
     }
     void d11_clicked_cb()
     {
-        if((z2[0]&&!z2[2])||(last==11&&!z2[2]))
+        if(dsum<2);
+
+            else if((z2[0]&&!z2[2])||(last==11&&!z2[2]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
                 z2[2]=true;
                 gtk_button_set_label(GTK_BUTTON(d11),(const gchar*) "0");
@@ -792,9 +879,11 @@ GtkBuilder *builder;
     }
     void d12_clicked_cb()
     {
-        if((z2[0]&&!z2[3])||(last==12&&!z2[3]))
+        if(dsum<3);
+
+            else if((z2[0]&&!z2[3])||(last==12&&!z2[3]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
                 z2[3]=true;
                 gtk_button_set_label(GTK_BUTTON(d12),(const gchar*) "0");
@@ -804,9 +893,11 @@ GtkBuilder *builder;
     }
     void d13_clicked_cb()
     {
-        if((z2[0]&&!z2[4])||(last==13&&!z2[4]))
+        if(dsum<4);
+
+            else if((z2[0]&&!z2[4])||(last==13&&!z2[4]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
                 z2[4]=true;
                 gtk_button_set_label(GTK_BUTTON(d13),(const gchar*) "0");
@@ -816,9 +907,11 @@ GtkBuilder *builder;
     }
     void d14_clicked_cb()
     {
-        if((z2[0]&&!z2[5])||(last==14&&!z2[5]))
+        if(dsum<5);
+
+            else if((z2[0]&&!z2[5])||(last==14&&!z2[5]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
                 z2[5]=true;
                 gtk_button_set_label(GTK_BUTTON(d14),(const gchar*) "0");
@@ -828,9 +921,11 @@ GtkBuilder *builder;
     }
     void d15_clicked_cb()
     {
-        if((z2[0]&&!z2[6])||(last==15&&!z2[6]))
+        if(dsum<6);
+
+            else if((z2[0]&&!z2[6])||(last==15&&!z2[6]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
                 z2[6]=true;
                 gtk_button_set_label(GTK_BUTTON(d15),(const gchar*) "0");
@@ -840,9 +935,11 @@ GtkBuilder *builder;
     }
     void d16_clicked_cb()
     {
-        if((z2[0]&&!z2[7])||(last==16&&!z2[7]))
+        if(dsum<7);
+
+            else if((z2[0]&&!z2[7])||(last==16&&!z2[7]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
                 z2[7]=true;
                 gtk_button_set_label(GTK_BUTTON(d16),(const gchar*) "0");
@@ -852,9 +949,11 @@ GtkBuilder *builder;
     }
     void d17_clicked_cb()
     {
-        if((z2[0]&&!z2[8])||(last==17&&!z2[8]))
+        if(dsum<8);
+
+            else if((z2[0]&&!z2[8])||(last==17&&!z2[8]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
                 z2[8]=true;
                 gtk_button_set_label(GTK_BUTTON(d17),(const gchar*) "0");
@@ -864,9 +963,11 @@ GtkBuilder *builder;
     }
     void d18_clicked_cb()
     {
-        if((z2[0]&&!z2[9])||(last==18&&!z2[9]))
+        if(dsum<9);
+
+            else if((z2[0]&&!z2[9])||(last==18&&!z2[9]))
         {
-                z[0]=true;
+                //z[0]=true;
                 z2[0]=false;
                 z2[9]=true;
                 gtk_button_set_label(GTK_BUTTON(d18),(const gchar*) "0");
