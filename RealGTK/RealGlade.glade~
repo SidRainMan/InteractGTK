@@ -273,6 +273,248 @@
       </object>
     </child>
   </object>
+  <object class="GtkApplicationWindow" id="ChopS">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkFixed" id="fixed6">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkButton" id="p1lh">
+            <property name="label" translatable="yes">Left Hand</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="p1lh_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">80</property>
+            <property name="y">200</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="p1rh">
+            <property name="label" translatable="yes">Right Hand</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="p1rh_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">270</property>
+            <property name="y">200</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="p2lh">
+            <property name="label" translatable="yes">Left Hand</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="p2lh_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">270</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="p2rh">
+            <property name="label" translatable="yes">Right Hand</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="p2rh_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">80</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="p1at">
+            <property name="label" translatable="yes">Attack</property>
+            <property name="name">o16=false;</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="p1at_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">140</property>
+            <property name="y">156</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="p1sp">
+            <property name="label" translatable="yes">Split</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="p1sp_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">156</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="p2at">
+            <property name="label" translatable="yes">Attack</property>
+            <property name="name">o16=false;</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="p2at_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">140</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="p2sp">
+            <property name="label" translatable="yes">Split</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="p2sp_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry4">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="placeholder-text" translatable="yes">0</property>
+            <signal name="changed" handler="entry4_changed_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">390</property>
+            <property name="y">200</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry5">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="placeholder-text" translatable="yes">0</property>
+            <signal name="changed" handler="entry5_changed_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">390</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label20">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Right Hand:</property>
+          </object>
+          <packing>
+            <property name="x">430</property>
+            <property name="y">30</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label21">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Right Hand:</property>
+          </object>
+          <packing>
+            <property name="x">430</property>
+            <property name="y">180</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label22">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">1</property>
+          </object>
+          <packing>
+            <property name="x">83</property>
+            <property name="y">176</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label23">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">1</property>
+          </object>
+          <packing>
+            <property name="x">363</property>
+            <property name="y">176</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="okb">
+            <property name="label" translatable="yes">OK</property>
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="okb_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">417</property>
+            <property name="y">95</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="lable24">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">1</property>
+          </object>
+          <packing>
+            <property name="x">363</property>
+            <property name="y">30</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label25">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">1</property>
+          </object>
+          <packing>
+            <property name="x">83</property>
+            <property name="y">30</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label15">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Left</property>
+          </object>
+          <packing>
+            <property name="x">215</property>
+            <property name="y">200</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label16">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Right</property>
+          </object>
+          <packing>
+            <property name="x">215</property>
+            <property name="y">60</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkApplicationWindow" id="DOWin4">
     <property name="can-focus">False</property>
     <child>
@@ -643,8 +885,8 @@
             <property name="label" translatable="yes">Next Turn Player 1</property>
           </object>
           <packing>
-            <property name="x">540</property>
-            <property name="y">180</property>
+            <property name="x">520</property>
+            <property name="y">200</property>
           </packing>
         </child>
         <child>
@@ -673,6 +915,17 @@
           <packing>
             <property name="x">350</property>
             <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label14">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Player 2 will click choice</property>
+          </object>
+          <packing>
+            <property name="x">500</property>
+            <property name="y">170</property>
           </packing>
         </child>
       </object>
