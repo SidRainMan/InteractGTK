@@ -737,6 +737,7 @@ GtkBuilder *builder;
                 else gtk_label_set_text(GTK_LABEL(label14),(const gchar*) "Its a draw!!!!");
 
                 gtk_widget_hide(label11);
+                 gtk_widget_hide (b16);
                 o16=false;
             }
         else if(o16);
@@ -771,6 +772,7 @@ GtkBuilder *builder;
                 else gtk_label_set_text(GTK_LABEL(label14),(const gchar*) "Its a draw!!!!");
 
                 gtk_widget_hide(label11);
+                 gtk_widget_hide (b16);
                 o16=false;
             }
             else if(zab1){z[0]=false;z2[0]=true;}
@@ -816,6 +818,7 @@ GtkBuilder *builder;
                     else if(p1sum<p2sum)gtk_label_set_text(GTK_LABEL(label14),(const gchar*) "Player 1(on Top) wins!!!!");
                     else gtk_label_set_text(GTK_LABEL(label14),(const gchar*) "Its a draw!!!!");
                     gtk_widget_hide(label11);
+                    gtk_widget_hide (b16);
 
                     o16=false;
                     }
@@ -835,6 +838,7 @@ GtkBuilder *builder;
                     else gtk_label_set_text(GTK_LABEL(label14),(const gchar*) "Its a draw!!!!");
 
                     gtk_widget_hide(label11);
+                     gtk_widget_hide (b16);
 
                     o16=false;
 
