@@ -11,7 +11,7 @@
 
 //Global Variables
 
-//Window1
+//Window12
 
 GtkWidget *window1;
 GtkWidget *fixed1;
